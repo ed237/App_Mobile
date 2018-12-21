@@ -1,0 +1,7 @@
+{
+  "name": "MonAppli",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

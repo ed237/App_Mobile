@@ -1,0 +1,33 @@
+page-accueil {
+    
+        .bg-img{
+    background-image: url("../assets/imgs/b.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+        }
+        .bg-imgs{
+            background-image: url("../assets/imgs/a.jpg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+                }
+    
+                .bg-imgss{
+                    background-image: url("../assets/imgs/c.jpg");
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: cover;
+                        }
+
+
+                    
+        .slider-p{
+            padding-bottom: 100px;
+    }
+    
+        .swiper-pagination-bullet-active{
+            background: white; 
+        }
+    
+    }

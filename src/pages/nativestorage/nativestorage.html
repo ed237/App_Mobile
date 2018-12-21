@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>LIVRES</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p>Ajoutez vos livres préférés !</p>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label fixed>Nom</ion-label>
+      <ion-input type="text" [(ngModel)]="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Surnom</ion-label>
+      <ion-input type="text" [(ngModel)]="surname"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Année</ion-label>
+      <ion-input type="text" [(ngModel)]="years"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <button ion-button clear (tap)="storeIdentity()">Sauvegarder ma carte !!</button>
+  <button ion-button clear (tap)="getMyName()">Quel est mon nom ?</button>
+  <div style="position:absolute; bottom:120px; text-align:center; z-index:1000; width:100%">
+    <button ion-button color="light" round outline [navPush]="nextPage">NEXT</button>
+  </div>
+
+</ion-content>
