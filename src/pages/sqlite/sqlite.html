@@ -41,7 +41,7 @@
 
   </ion-list>
 
-  <button ion-button clear (click)="saveMyLivre()">Enregistrez mes livres</button>
+  <button ion-button clear (tap)="saveMyLivre()">Enregistrez mes livres</button>
 
   <ion-list *ngIf="livres">
     <ion-item *ngFor="let livre of livres">
@@ -49,7 +49,7 @@
     </ion-item>
   </ion-list>
 
-  <button ion-button clear (click)="retrieveLivre()">Livres enregistrés</button>
+  <button ion-button clear (tap)="retrieveLivre()">Livres enregistrés</button>
   <div style="position:absolute; bottom:120px; text-align:center; z-index:1000; width:100%">
     <button ion-button color="light" round outline [navPush]="nextPage">NEXT</button>
   </div>
