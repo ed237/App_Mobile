@@ -22,12 +22,12 @@ export class SqlitePage {
 
   nextPage = NewsPage;
   private db: SQLiteObject;
-  romans: string[] = [];
-  titleRoman: string;
-  ratingRoman: number; 
-  titleLivre: string;
-  descriptionRoman: string;
-  categorieRoman: string;
+  livres: string[] = [];
+  titlelivre: string;
+  ratinglivre: number; 
+  //titleLivre: string;
+  descriptionlivre: string;
+  categorielivre: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private sqlite: SQLite) {
   this.createDatabaseFile();
@@ -48,9 +48,9 @@ export class SqlitePage {
   }
 
   private createTables(): void{
-    this.db.executeSql('CREATE TABLE IF NOT EXISTS`ROMANS` ( `idRomans` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, `nom` TEXT NOT NULL, `eval` INTEGER NOT NULL, `desc` TEXT, `categoryid` INTEGER, FOREIGN KEY(`categoryid`) REFERENCES `CATEGORIES`(`idCategories`) )', {})
+    this.db.executeSql('CREATE TABLE IF NOT EXISTS`livreS` ( `idlivres` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, `nom` TEXT NOT NULL, `eval` INTEGER NOT NULL, `desc` TEXT, `categoryid` INTEGER, FOREIGN KEY(`categoryid`) REFERENCES `CATEGORIES`(`idCategories`) )', {})
     .then(() => {
-      console.log('Table Romans creates !');
+      console.log('Table livres creates !');
       this.db.executeSql('CREATE TABLE IF NOT EXISTS `CATEGORIES` ( `idCategories` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, `nom` TEXT NOT NULL )', {})
       .then(() => console.log('Table Categories creates !'))
       .catch(e => console.log(e));
@@ -61,31 +61,31 @@ export class SqlitePage {
   ionViewDidEnter() {
     console.log('ionViewDidEnter SqlitePage');
   }
-  public saveMyRoman() {
-    console.log('Roman name -> ' + this.titleRoman);
-    console.log('Rating -> ' + this.ratingRoman + '/5');
-    console.log('Description -> ' + this.descriptionRoman);
-    console.log('Categorie -> ' + this.categorieRoman);
-    console.log('Livre -> ' + this.titleLivre);
+  public saveMyLivre() {
+    console.log('livre name -> ' + this.titlelivre);
+    console.log('Rating -> ' + this.ratinglivre );
+    console.log('Description -> ' + this.descriptionlivre);
+    console.log('Categorie -> ' + this.categorielivre);
+   // console.log('Livre -> ' + this.titleLivre);
 
     // INSERT INTO `CATEGORIES` (name) VALUES('Test');
-    // INSERT INTO `ROMANS`(name, eval, desc, categoryId) VALUES ('Nom film', 3, 'Description', 1)
-    this.db.executeSql('INSERT INTO `CATEGORIES` (name) VALUES(\'' + this.categorieRoman + '\')', {})
+    // INSERT INTO `LIVRES`(name, eval, desc, categoryId) VALUES ('Nom livre', 3, 'Description', 1)
+    this.db.executeSql('INSERT INTO `CATEGORIES` (name) VALUES(\'' + this.categorielivre + '\')', {})
       .then(() => {
         console.log('Categorie inséré !');
 
-        this.db.executeSql('INSERT INTO `ROMANS`(name, eval, desc, categoryId) VALUES (\'' + this.titleRoman + '\', '+ this.ratingRoman +', \''+ this.descriptionRoman +'\', last_insert_rowid())', {})
-        .then(() => console.log('Roman inséré !'))
+        this.db.executeSql('INSERT INTO `LIVRES`(name, eval, desc, categoryId) VALUES (\'' + this.titlelivre + '\', '+ this.ratinglivre +', \''+ this.descriptionlivre +'\', last_insert_rowid())', {})
+        .then(() => console.log('livre inséré !'))
         .catch(e => console.log(e));
 
       })
       .catch(e => console.log(e));
   }
 
-  public retrieveRoman() {
+  public retrieveLivre() {
 
-    this.romans = [];
-    this.db.executeSql('SELECT name FROM `ROMANS`', {})
+    this.livres = [];
+    this.db.executeSql('SELECT name FROM `LIVRES`', {})
 		.then((data) => {
 
 			if(data == null) {
@@ -95,7 +95,7 @@ export class SqlitePage {
 			if(data.rows) {
 				if(data.rows.length > 0) {
 					for(var i = 0; i < data.rows.length; i++) {
-            this.romans.push(data.rows.item(i).name);
+            this.livres.push(data.rows.item(i).name);
           }
 				}
 			}

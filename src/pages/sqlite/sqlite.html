@@ -16,11 +16,11 @@
 <ion-content padding class="bg-img">
 
 
-  <p>Ajoutez vos Romans favoris</p>
+  <p>Ajoutez vos livres favoris</p>
   <ion-list>
     <ion-item>
       <ion-label fixed>Nom du livre</ion-label>
-      <ion-input type="text" [(ngModel)]="titleRoman"></ion-input>
+      <ion-input type="text" [(ngModel)]="titlelivre"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -30,26 +30,26 @@
 
     <ion-item>
       <ion-label fixed>Note lecteur</ion-label>
-      <ion-input type="number" [(ngModel)]="ratingRoman"></ion-input>
+      <ion-input type="number" [(ngModel)]="ratinglivre"></ion-input>
     </ion-item>
 
 
     <ion-item>
       <ion-label fixed>Résumé de votre ouvrage</ion-label>
-      <ion-input type="text" [(ngModel)]="descriptionRomans"></ion-input>
+      <ion-input type="text" [(ngModel)]="descriptionlivres"></ion-input>
     </ion-item>
 
   </ion-list>
 
-  <button ion-button clear (tap)="saveMyRoman()">Enregistrez mes livres</button>
+  <button ion-button clear (click)="saveMylivre()">Enregistrez mes livres</button>
 
-  <ion-list *ngIf="romans">
-    <ion-item *ngFor="let roman of romans">
-      <ion-label fixed>{{ roman }}</ion-label>
+  <ion-list *ngIf="livres">
+    <ion-item *ngFor="let livre of livres">
+      <ion-label fixed>{{ livre }}</ion-label>
     </ion-item>
   </ion-list>
 
-  <button ion-button clear (tap)="retrieveRoman()">Livres enregistrés</button>
+  <button ion-button clear (click)="retrievelivre()">Livres enregistrés</button>
   <div style="position:absolute; bottom:120px; text-align:center; z-index:1000; width:100%">
     <button ion-button color="light" round outline [navPush]="nextPage">NEXT</button>
   </div>
